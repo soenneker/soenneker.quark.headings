@@ -4,7 +4,6 @@ using Serilog;
 using Soenneker.Fixtures.Unit;
 using Soenneker.Utils.Test;
 using Soenneker.Blazor.MockJsRuntime.Registrars;
-using Soenneker.Quark.Headings.Registrars;
 
 namespace Soenneker.Quark.Headings.Tests;
 
@@ -28,7 +27,5 @@ public sealed class Fixture : UnitFixture
 
         IConfiguration config = TestUtil.BuildConfig();
         services.AddSingleton(config);
-
-        services.AddHeadingAsScoped();
     }
 }

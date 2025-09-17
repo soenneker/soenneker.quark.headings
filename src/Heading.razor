@@ -1,27 +1,27 @@
-@using Soenneker.Quark.Headings.Enums
+@using Soenneker.Quark.Enums.Scales
 @inherits Soenneker.Quark.Components.Element
 
-@if (Size == HeadingSize.S1)
+@if (Scale == Scale.S1)
 {
     <h1 @attributes="BuildAttributes()">@ChildContent</h1>
 }
-else if (Size == HeadingSize.S2)
+else if (Scale == Scale.S2)
 {
     <h2 @attributes="BuildAttributes()">@ChildContent</h2>
 }
-else if (Size == HeadingSize.S3)
+else if (Scale == Scale.S3)
 {
     <h3 @attributes="BuildAttributes()">@ChildContent</h3>
 }
-else if (Size == HeadingSize.S4)
+else if (Scale == Scale.S4)
 {
     <h4 @attributes="BuildAttributes()">@ChildContent</h4>
 }
-else if (Size == HeadingSize.S5)
+else if (Scale == Scale.S5)
 {
     <h5 @attributes="BuildAttributes()">@ChildContent</h5>
 }
-else if (Size == HeadingSize.S6)
+else if (Scale == Scale.S6)
 {
     <h6 @attributes="BuildAttributes()">@ChildContent</h6>
 }
@@ -35,5 +35,5 @@ else
     /// Gets or sets the heading size.
     /// </summary>
     [Parameter] 
-    public HeadingSize Size { get; set; } = HeadingSize.S3;
+    public Scale Scale { get; set; } = Scale.S3;
 }

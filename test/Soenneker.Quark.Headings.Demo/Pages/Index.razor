@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using Microsoft.Extensions.Logging
+@using Soenneker.Quark.Enums.Scales
 
 @inject ILogger<Index> Logger
 
@@ -17,12 +18,12 @@
             <p>Use the <code>Heading</code> component with different sizes:</p>
             
             <div class="mb-3">
-                <Heading Size="HeadingSize.S1">H1 Heading - Largest</Heading>
-                <Heading Size="HeadingSize.S2">H2 Heading - Second Largest</Heading>
-                <Heading Size="HeadingSize.S3">H3 Heading - Default Size</Heading>
-                <Heading Size="HeadingSize.S4">H4 Heading - Medium</Heading>
-                <Heading Size="HeadingSize.S5">H5 Heading - Small</Heading>
-                <Heading Size="HeadingSize.S6">H6 Heading - Smallest</Heading>
+                <Heading Scale="Scale.S1">H1 Heading - Largest</Heading>
+                <Heading Scale="Scale.S2">H2 Heading - Second Largest</Heading>
+                <Heading Scale="Scale.S3">H3 Heading - Default Size</Heading>
+                <Heading Scale="Scale.S4">H4 Heading - Medium</Heading>
+                <Heading Scale="Scale.S5">H5 Heading - Small</Heading>
+                <Heading Scale="Scale.S6">H6 Heading - Smallest</Heading>
             </div>
         </div>
     </div>
