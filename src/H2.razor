@@ -1,5 +1,9 @@
 @inherits Soenneker.Quark.Components.Element
 
 <h2 @attributes="BuildAttributes()">
-	@ChildContent
+    @ChildContent
 </h2>
+
+@code {
+    public override string? Name { get; set; } = "H2";
+}
