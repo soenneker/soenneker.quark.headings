@@ -1,43 +1,41 @@
-@using Soenneker.Quark.Enums
 @inherits Soenneker.Quark.Element
 
-@if (Scale?.ToString() == "scale-1")
-{
-    <h1 @attributes="BuildAttributes()" >@ChildContent</h1>
-}
-else if (Scale?.ToString() == "scale-2")
-{
-    <h2 @attributes="BuildAttributes()" >@ChildContent</h2>
-}
-else if (Scale?.ToString() == "scale-3")
-{
-    <h3 @attributes="BuildAttributes()" >@ChildContent</h3>
-}
-else if (Scale?.ToString() == "scale-4")
-{
-    <h4 @attributes="BuildAttributes()" >@ChildContent</h4>
-}
-else if (Scale?.ToString() == "scale-5")
-{
-    <h5 @attributes="BuildAttributes()" >@ChildContent</h5>
-}
-else if (Scale?.ToString() == "scale-6")
-{
-    <h6 @attributes="BuildAttributes()" >@ChildContent</h6>
-}
-else
-{
-    <h3 @attributes="BuildAttributes()" >@ChildContent</h3>
-}
+@HeadingFrag
 
 @code {
 
-    /// <summary>
-    /// Gets or sets the heading size.
-    /// </summary>
     [Parameter]
     public CssValue<ScaleBuilder>? Scale { get; set; }
 
     public override string? Name { get; set; } = "Heading";
+
+    private static int GetHeadingLevel(CssValue<ScaleBuilder>? scale)
+    {
+        const int fallback = 3;
+        var s = scale?.ToString();
+        if (string.IsNullOrWhiteSpace(s)) return fallback;
+
+        if (s.Length >= 7 && s.AsSpan()
+                .StartsWith("scale-"))
+        {
+            int d = s[^1] - '0';
+            if ((uint)(d - 1) <= 5) return d; // 1..6
+        }
+
+        return fallback;
+    }
+
+    private RenderFragment HeadingFrag => builder =>
+    {
+        var level = GetHeadingLevel(Scale);
+        builder.OpenElement(0, $"h{level}");
+
+        var attrs = BuildAttributes();
+        if (attrs is not null)
+            builder.AddMultipleAttributes(1, attrs);
+
+        builder.AddContent(2, ChildContent);
+        builder.CloseElement();
+    };
 
 }
